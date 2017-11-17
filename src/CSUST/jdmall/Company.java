@@ -20,4 +20,30 @@ public class Company {
 	 */
 	private ArrayList<Product> products = new ArrayList<>();
 
+	/**
+	 * @param name
+	 * @param products
+	 */
+	public Company(String name, ArrayList<Product> products) {
+		this.name = name;
+		this.products = products;
+		for (Product e : products) {
+			e.setCompany(this);
+		}
+	}
+
+	public String getName() {
+		return name;
+	}
+
+	public ArrayList<Product> getProducts() {
+		return products;
+	}
+	
+	public void showInfo() {
+		for(Product e : products) {
+			e.print();
+		}
+	}
+
 }
