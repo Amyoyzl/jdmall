@@ -27,6 +27,10 @@ public class Item {
 		this.quantity = quantity;
 	}
 
+	public Item(Product product) {
+		this(product, 1);
+	}
+
 	public Product getProduct() {
 		return product;
 	}

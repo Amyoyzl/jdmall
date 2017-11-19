@@ -1,7 +1,5 @@
 package CSUST.jdmall;
 
-import com.sun.org.apache.xerces.internal.util.SynchronizedSymbolTable;
-
 /**
  * 商品
  * 
@@ -41,17 +39,9 @@ public class Product {
 		this.title = title;
 		this.price = price;
 		this.company = company;
+		company.addProduct(this);
 		this.category = category;
-	}
-
-	/**
-	 * @param title
-	 * @param price
-	 */
-	public Product(String title, double price) {
-		this.title = title;
-		this.price = price;
-
+		category.addProduct(this);
 	}
 
 	public String getTitle() {

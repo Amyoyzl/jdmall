@@ -35,21 +35,13 @@ public class Order {
 	/**
 	 * 订单项
 	 */
-	private ArrayList<Item> item = new ArrayList<>();
-
-	/**
-	 * @param account
-	 * @param address
-	 * @param item
-	 */
-	public Order(Account account, String address, ArrayList<Item> item) {
+	private ArrayList<Item> items = new ArrayList<>();
+	
+	public Order(Account account, String address) {
 		this.account = account;
+		account.addOrder(this);
 		this.address = address;
-		this.item = item;
 		time = new Date();
-		for (Item e : item) {
-			totalMoney += e.getProduct().getPrice() * e.getQuantity();
-		}
 	}
 
 	public String getAddress() {
@@ -61,11 +53,11 @@ public class Order {
 	}
 
 	public ArrayList<Item> getItem() {
-		return item;
+		return items;
 	}
 
 	public void setItem(ArrayList<Item> item) {
-		this.item = item;
+		this.items = item;
 	}
 
 	public Account getAccount() {
@@ -77,7 +69,6 @@ public class Order {
 	}
 
 	public String getTime() {
-		// return time.toLocaleString();
 		SimpleDateFormat format = new SimpleDateFormat("YYYY-MM-dd HH:mm");
 		return format.format(time);
 	}
@@ -86,11 +77,20 @@ public class Order {
 		System.out.println("时间：" + getTime());
 		System.out.println("地址：" + address);
 		System.out.println("详细信息：");
-		for(Item e : item) {
+		for(Item e : items) {
 			e.showInfo();
 		}
 		System.out.println("总金额：" + totalMoney);
 		System.out.println("-----------------------------------------------");
+	}
+
+	public void addItem(Item item) {
+		totalMoney = totalMoney + item.getProduct().getPrice()*item.getQuantity();
+		items.add(item);
+	}
+
+	public void setAccount(Account account) {
+		this.account = account;
 	}
 
 }

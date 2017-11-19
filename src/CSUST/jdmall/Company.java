@@ -24,12 +24,18 @@ public class Company {
 	 * @param name
 	 * @param products
 	 */
-	public Company(String name, ArrayList<Product> products) {
+
+	public Company(String name) {
 		this.name = name;
-		this.products = products;
-		for (Product e : products) {
-			e.setCompany(this);
-		}
+	}
+
+	/**
+	 * 添加新的产品
+	 * 
+	 * @param product
+	 */
+	public void addProduct(Product product) {
+		products.add(product);
 	}
 
 	public String getName() {
@@ -39,9 +45,9 @@ public class Company {
 	public ArrayList<Product> getProducts() {
 		return products;
 	}
-	
+
 	public void showInfo() {
-		for(Product e : products) {
+		for (Product e : products) {
 			e.print();
 		}
 	}

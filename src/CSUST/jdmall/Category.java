@@ -22,14 +22,14 @@ public class Category {
 
 	/**
 	 * @param title
-	 * @param products
 	 */
-	public Category(String title, ArrayList<Product> products) {
+	public Category(String title) {
 		this.title = title;
-		this.products = products;
-		for (Product e : products) {
-			e.setCategory(this);
-		}
+	}
+
+	public void addProduct(Product product) {
+		product.setCategory(this);
+		products.add(product);
 	}
 
 	public String getTitle() {

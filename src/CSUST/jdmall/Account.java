@@ -28,6 +28,10 @@ public class Account {
 		this.name = name;
 		this.orders = orders;
 	}
+	
+	public Account(String name) {
+		this.name = name;
+	}
 
 	public String getName() {
 		return name;
@@ -52,6 +56,11 @@ public class Account {
 			e.showInfo();
 		}
 		System.out.println("***********************************************");
+	}
+
+	public void addOrder(Order order) {
+		order.setAccount(this);
+		orders.add(order);
 	}
 
 }
